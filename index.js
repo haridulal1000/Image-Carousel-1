@@ -1,7 +1,7 @@
 //function to add image carousel
-function carousel(className) {
+function carousel(mainId) {
   let dim = 500;
-  let imageContainer = document.querySelector(`.${className}`);
+  let imageContainer = document.getElementById(mainId);
   imageContainer.style.display = "block";
   imageContainer.style.backgroundColor = "red";
   imageContainer.style.width = dim + "px";
@@ -11,10 +11,10 @@ function carousel(className) {
   imageContainer.style.overflow = "hidden";
   const delay = 10;
   let pos = 0;
-  let imageRow = document.querySelector(`.${className} div`);
+  let imageRow = document.querySelector(`#${mainId} div`);
   imageRow.style.position = "relative";
   imageRow.style.left = "0px";
-  let images = document.querySelectorAll(`.${className} div img`);
+  let images = document.querySelectorAll(`#${mainId} div img`);
 
   imageRow.style.width = images[0].getAttribute("width") + "px";
 
@@ -30,7 +30,7 @@ function carousel(className) {
   //button-left
 
   let buttonLeft = document.createElement("button");
-  buttonLeft.setAttribute("id", className + "btn-left");
+  buttonLeft.setAttribute("id", mainId + "btn-left");
   buttonLeft.style.fontSize = "85px";
   buttonLeft.innerHTML = "&#9001;";
   buttonLeft.style.zIndex = "5";
@@ -43,7 +43,7 @@ function carousel(className) {
 
   //button-right
   let buttonRight = document.createElement("button");
-  buttonRight.setAttribute("id", className + "btn-right");
+  buttonRight.setAttribute("id", mainId + "btn-right");
   buttonRight.style.fontSize = "85px";
   buttonRight.innerHTML = "&#9002;";
   buttonRight.style.zIndex = "5";
@@ -71,7 +71,7 @@ function carousel(className) {
     dot.style.display = "inline-block";
     dot.style.margin = "10px";
     dot.style.backgroundColor = "white";
-    dot.setAttribute("class", className + "dot" + i);
+    dot.setAttribute("class", mainId + "dot" + i);
     dot.style.borderRadius = "50%";
     dot.addEventListener("click", handleDot);
     dots.push(dot);
@@ -84,9 +84,9 @@ function carousel(className) {
   buttonRight.addEventListener("click", shift);
   function shift(e) {
     pos = parseInt(imageRow.style.left);
-    if (e.target.getAttribute("id") === className + "btn-left") {
+    if (e.target.getAttribute("id") === mainId + "btn-left") {
       shiftRight(delay);
-    } else if (e.target.getAttribute("id") === className + "btn-right") {
+    } else if (e.target.getAttribute("id") === mainId + "btn-right") {
       shiftLeft(delay);
     }
   }
@@ -134,7 +134,7 @@ function carousel(className) {
   //handling clicks on the dots
   function handleDot(e) {
     let ind = parseInt(
-      e.target.getAttribute("class").slice(className.length + 3)
+      e.target.getAttribute("class").slice(mainId.length + 3)
     );
     console.log(ind);
     let diff = -ind - index;
