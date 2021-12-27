@@ -1,6 +1,7 @@
 //function to add image carousel
-function carousel(mainId) {
-  let dim = 500;
+function carousel(properties) {
+  let dim = properties.dim;
+  let mainId=properties.mainId;
   let imageContainer = document.getElementById(mainId);
   imageContainer.style.display = 'block';
   imageContainer.style.backgroundColor = 'red';
@@ -38,7 +39,7 @@ function carousel(mainId) {
   buttonLeft.style.backgroundColor = 'transparent';
   buttonLeft.style.color = 'white';
   buttonLeft.style.border = 'none';
-  buttonLeft.style.top = '200px';
+  buttonLeft.style.top = dim/2+'px';
   imageContainer.appendChild(buttonLeft);
 
   //button-right
@@ -51,8 +52,8 @@ function carousel(mainId) {
   buttonRight.style.backgroundColor = 'transparent';
   buttonRight.style.color = 'white';
   buttonRight.style.border = 'none';
-  buttonRight.style.top = '200px';
-  buttonRight.style.left = '454px';
+  buttonRight.style.top = dim/2+'px';
+  buttonRight.style.right = '0px';
   imageContainer.appendChild(buttonRight);
   //dots
   let dots = [];
@@ -61,8 +62,9 @@ function carousel(mainId) {
   dotsContainer.style.margin = '0 -15%';
   dotsContainer.style.position = 'absolute';
   dotsContainer.style.zIndex = '10';
-  dotsContainer.style.top = '424px';
-  dotsContainer.style.left = (70+(550-70)/(images.length-1))+'px';
+  dotsContainer.style.alignContent='center';
+  dotsContainer.style.bottom = '0px';
+  dotsContainer.style.left = dim/2+'px';
   imageContainer.appendChild(dotsContainer);
   //creating dot elements
   for (let i = 0; i < images.length; i++) {
@@ -158,6 +160,14 @@ function carousel(mainId) {
   }
 }
 
+let properties1={
+  mainId:'image-container',
+  dim:700,
+}
+let properties2={
+  mainId:'image-container2',
+  dim:700,
 
-carousel('image-container');
-carousel('image-container2');
+}
+carousel(properties1);
+carousel(properties2);
