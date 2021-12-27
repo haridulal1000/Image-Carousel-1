@@ -62,7 +62,7 @@ function carousel(properties) {
   dotsContainer.style.margin = '0 -15%';
   dotsContainer.style.position = 'absolute';
   dotsContainer.style.zIndex = '10';
-  dotsContainer.style.alignContent='center';
+  dotsContainer.style.alignItems='center';
   dotsContainer.style.bottom = '0px';
   dotsContainer.style.left = dim/2+'px';
   imageContainer.appendChild(dotsContainer);
@@ -162,7 +162,7 @@ function carousel(properties) {
 
 let properties1={
   mainId:'image-container',
-  dim:700,
+  dim:500,
 }
 let properties2={
   mainId:'image-container2',
