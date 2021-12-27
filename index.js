@@ -101,6 +101,8 @@ function carousel(mainId) {
     }
     leftShifting = window.requestAnimationFrame(() => shiftLeft(d));
     if (pos <= (index - 1) * dim) {
+      pos = (index - 1) * dim;
+      imageRow.style.left = pos + "px";
       window.cancelAnimationFrame(leftShifting);
       index -= 1;
     } else {
@@ -118,6 +120,8 @@ function carousel(mainId) {
     }
     rightShifting = window.requestAnimationFrame(() => shiftRight(d));
     if (pos >= (index + 1) * dim) {
+      pos = (index + 1) * dim;
+      imageRow.style.left = pos + "px";
       window.cancelAnimationFrame(rightShifting);
       index += 1;
     } else {
